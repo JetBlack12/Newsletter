@@ -1,0 +1,240 @@
+//font's variables
+$RobotoB:"RobotoBold";
+$Roboto:"Roboto";
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+$font-size-regular: 16px;
+
+//colors
+$tomato: hsl(4, 100%, 67%);
+$dark-slate-grey: hsl(234, 29%, 20%);
+$charcoal-grey: hsl(235, 18%, 26%);
+$grey: hsl(231, 7%, 60%);
+$white: hsl(0, 0%, 100%);
+
+// setting the fonts faces used
+@font-face {
+  font-family: "Roboto";
+  src: url("../../public/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: "RobotoBold";
+  src: url("../../public/Roboto-Bold.ttf");
+}
+
+body{
+  //settings global styles
+  background-color: $charcoal-grey;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  main{
+    // settings styles for first part of form
+    .container{
+      background-color: white;
+      // display: flex;
+      flex-direction: row;
+      padding: 2rem;
+      padding-left: 4rem;
+      border-radius: 29px;
+      section{
+        margin-top: 1rem;
+        margin-right: 8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: start;
+        h1{
+          font-family: $RobotoB;
+          font-size: 54px;
+          margin-bottom: 1.5rem;
+          
+          color: $dark-slate-grey;
+        }
+        p{
+          color: $dark-slate-grey;
+          font-family: $Roboto;
+          width: 23rem;
+          font-size: $font-size-regular;
+        }
+        ul{
+          list-style: none;
+          padding: 0;
+          li{
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            span{
+              margin-left: 0.8rem;
+              color: $dark-slate-grey;
+              font-family: $Roboto;
+              font-size: $font-size-regular;
+            }
+          }
+        }
+        form{
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          .label{
+            width: 105%;
+            font-family: $RobotoB;
+            color: $dark-slate-grey;
+            font-size: 13px;
+            margin-bottom: -10px;
+            margin-top: 7px;
+            display: flex;
+            justify-content:space-between;
+          }
+          .errL{
+            width: 105%;
+            font-family: $RobotoB;
+            color: $dark-slate-grey;
+            font-size: 13px;
+            margin-bottom: -10px;
+            margin-top: 7px;
+            display: flex;
+            justify-content:space-between;
+            span{
+              color: $tomato;
+            }
+          }
+          .input{
+            width: 100%;
+            background-color: transparent;
+            // border: .1rem solid $grey;
+            border: none;
+            outline: 1px solid $grey;
+            border-radius: 7px;
+            margin-top: 1.3rem;
+            margin-bottom: 1.3rem;
+            height: 3rem;
+            font-family: $Roboto;
+            color:$dark-slate-grey;
+            padding-left: 1rem;
+            font-size: 15.5px;
+            &::placeholder{
+              font-family: $Roboto;
+              color:$grey;
+              font-size: 15.5px;
+            }
+            &:focus{
+              outline: 1px solid $dark-slate-grey;
+            }
+  
+          }
+          .errI{
+            width: 100%;
+            background-color:hsl(4, 100%, 67%,0.2);
+            // border: .1rem solid $grey;
+            border: none;
+            outline: 1px solid $tomato;
+            border-radius: 7px;
+            margin-top: 1.3rem;
+            margin-bottom: 1.3rem;
+            height: 3rem;
+            font-family: $Roboto;
+            color:$tomato;
+            padding-left: 1rem;
+            font-size: 15.5px;
+            &::placeholder{
+              font-family: $Roboto;
+              color:$tomato;
+              font-size: 15.5px;
+            }
+            &:focus{
+              outline: 1px solid $tomato;
+            }
+  
+          }
+          
+        }
+        button{
+          width: 105%;
+          height: 3.3rem;
+          border-radius: 7px;
+          border: transparent;
+          font-family: $Roboto;
+          color:$white;
+          background: $dark-slate-grey;
+          font-size: 17px;
+          letter-spacing: 0.5px;
+          transition: ease-in 500ms box-shadow;
+          cursor: pointer;
+          &:hover{
+            background:linear-gradient(to right,#ff527a, #ff673e);
+            box-shadow: rgba(100, 100, 111,0.3) 0px 7px 29px 0px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    // making form "invisible" in order to move on to next part of the form
+    .container-invi{
+      display: none;
+    }
+    // making second part of form visible
+    .container{
+      display: flex;
+    }
+    // settings styles for second part of form
+    .container-vi{
+      background-color: white;
+      padding: 3rem;
+      width: 22rem;
+      height: 23rem;
+      border-radius: 25px;
+      padding-right: 4rem;
+      h1{
+        font-family: $RobotoB;
+        font-size: 50px;
+        margin-bottom: 1rem;
+        margin-top: 10px;
+          
+        color: $dark-slate-grey;
+      }
+      p{
+        font-family: $Roboto;
+        color: $charcoal-grey;
+        font-size: 15px;
+        margin-bottom: 35px;
+        span{
+          color: $dark-slate-grey;
+          font-family: $RobotoB;
+        }
+      }
+      button{
+        width: 105%;
+        height: 3.3rem;
+        border-radius: 7px;
+        border: transparent;
+        font-family: $Roboto;
+        color:$white;
+        background: $dark-slate-grey;
+        font-size: 17px;
+        letter-spacing: 0.5px;
+        transition: ease-in 500ms box-shadow;
+        cursor: pointer;
+        &:hover{
+          background:linear-gradient(to right,#ff527a, #ff673e);
+          box-shadow: rgba(100, 100, 111,0.3) 0px 7px 29px 0px;
+          cursor: pointer;
+        }
+      }
+    }
+    // settings styles of second part of form "invisible"
+    .container2{
+      display: none;
+    }
+  }
+}
+
+footer{
+  text-align: center;
+  margin-top: -2rem;
+  font-family: $Roboto;
+  color: white;
+}

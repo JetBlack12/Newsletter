@@ -1,95 +1,100 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+// setting up project/dependencies
+"use client"
+import Image from "next/image"
+import checkmark from "../../public/icon-list.svg"
+import success from "../../public/icon-success.svg"
+import illustration from "../../public/illustration-sign-up-desktop.svg"
+import { useEffect, useState } from "react";
+
 
 export default function Home() {
+  // settings states
+  const [email, setEmail] =  useState("")
+  const [error, setError] =  useState("")
+  const [correct, setCorrect] = useState(false)
+
+  // creating handlers
+  const onChange = (e) => {
+    setEmail(e.target.value)
+  }
+  const onSubmit = (e) => {
+    e.preventDefault()
+  }
+  const onClick = (e) => {
+    if(error == ""){
+      setCorrect(true)
+    }
+    else{
+      setCorrect(false)
+    }
+  }
+
+  // email validation with regex
+  useEffect(() => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const regex = new RegExp(emailRegex)
+    if(email != ""){
+      if(regex.test(email)){
+        setError("")
+      }
+      else{
+        setError("Invalid email")
+      }
+    }
+    else{
+      setError("Please enter email")
+    }
+  },[email])
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
+    <main>
+      <h1>
+      </h1>
+      <section role="part-two-form-container" aria-label="modal-container" className={correct == true ? "container-vi": "container2"}>
+        <Image src={success} aria-label="success-checkmark"/>
+        <h1 aria-label="modal-header">
+          Thanks for subscribing!
+        </h1>
+        <p aria-label="psa-text">
+          A confirmation email has been sent to <br/><span>{email}</span>. Please open it and click<br/> the button inside to confirm your subscription.
         </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <button>
+          Dismiss message
+        </button>
+      </section> 
+      <section role="part-one-form-container" className={correct == true ? "container-invi": "container"}>
+        <section aria-label="content-section-container">
+            <h1 aria-label="webpage-header">
+              Stay updated!
+            </h1>
+            <p aria-label="content-preface" aria-description="A short preface detailing the amount of users all using the newsletter, acting as a hook for viewers.">
+              Join 60,000+ product managers receiving monthly updates on:
+            </p>
+            <ul aria-label="cotent-list">
+              <li aria-label="newsletter-benefit">
+                <Image src={checkmark} aria-label="checkmark image"/><span>Product discovery and building what mattters</span>
+              </li>
+              <li aria-label="newsletter-benefit">
+                <Image src={checkmark} aria-label="checkmark image"/> <span>Measuring to ensure updates are a success</span>
+              </li>
+              <li aria-label="newsletter-benefit">
+              <Image src={checkmark} aria-label="checkmark image"/> <span>And much more!</span>
+              </li>
+            </ul>
+            <form aria-label="sign-up-form" onSubmit={onSubmit}>
+              <label aria-label="input-description" className={error == "" ? "label" : "errL"}>
+                Email address<span>{error}</span>
+              </label>
+              <input type="text" id="email-input" aria-label="email-input" placeholder="email@company.com" onChange={onChange}  className={error == "" ? "input" : "errI"}/>
+              <button onClick={onClick}>
+                Subscribe to monthly newsletter
+              </button>
+            </form>
+        </section>
+        <Image aria-label="accent-image" src={illustration}/>
+      </section>
     </main>
-  )
-}
+    )
+  }
+    
+    
