@@ -62,7 +62,6 @@ export default function Home() {
       </section> 
       <section role="part-one-form-container" className={correct == true ? "container-invi": "container"}>
         <div>
-
           <h1 aria-label="webpage-header">
             Stay updated!
           </h1>
