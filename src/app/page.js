@@ -54,7 +54,7 @@ export default function Home() {
           Thanks for subscribing!
         </h1>
         <p aria-label="psa-text">
-          A confirmation email has been sent to <br/>. Please open it and click<br/> the button inside to confirm your subscription.
+          A confirmation email has been sent to <br/> <span>{email}</span>. Please open it and click<br/> the button inside to confirm your subscription.
         </p>
         <button>
           Dismiss message
