@@ -48,7 +48,7 @@ export default function Home() {
 
   return (
     <main>
-      <section role="part-two-form-container" aria-label="modal-container" className={correct == true ? "container-vi": "container2"}>
+      <section aria-label="part-two-form-container" className={correct == true ? "container-vi": "container2"}>
         <Image src={success} aria-label="success-checkmark"/>
         <h1 aria-label="modal-header">
           Thanks for subscribing!
@@ -60,7 +60,7 @@ export default function Home() {
           Dismiss message
         </button>
       </section> 
-      <section role="part-one-form-container" className={correct == true ? "container-invi": "container"}>
+      <section aria-label="part-one-form-container" className={correct == true ? "container-invi": "container"}>
         <div>
           <h1 aria-label="webpage-header">
             Stay updated!
